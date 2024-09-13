@@ -21,7 +21,7 @@ async def descargar_cancion(query):
         }],
         'geo_bypass': True,
         'match_filter': 'vcodec: none',
-        'outtmpl': 'D:/piumbot/Music/%(title)s.%(ext)s', # Cambiar ruta de acceso a donde quieras que se descoargue la musica localmente!
+        'outtmpl': 'D:/piumbot/music/%(title)s.%(ext)s', # Cambiar ruta de acceso a donde quieras que se descoargue la musica localmente!
         'match_filter': yt_dlp.utils.match_filter_func('duration <= 666'),
     }
 
