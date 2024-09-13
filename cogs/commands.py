@@ -1,5 +1,3 @@
-import discord
-import os
 from discord import app_commands
 from embeds.playlist import playlist_embed 
 from cogs.utils.play import play
