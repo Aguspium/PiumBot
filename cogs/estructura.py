@@ -2,8 +2,10 @@ import discord
 import asyncio
 import yt_dlp
 import os
+from dotenv import load_dotenv
 from collections import defaultdict
 
+load_dotenv()
 queues = defaultdict(list)
 current_song = {}
 
@@ -21,7 +23,7 @@ async def descargar_cancion(query):
         }],
         'geo_bypass': True,
         'match_filter': 'vcodec: none',
-        'outtmpl': 'D:/piumbot/music/%(title)s.%(ext)s', # Cambiar ruta de acceso a donde quieras que se descoargue la musica localmente!
+        'outtmpl': os.getenv('DB_RUTA'), # Cambiar ruta de acceso a donde quieras que se descoargue la musica localmente!
         'match_filter': yt_dlp.utils.match_filter_func('duration <= 666'),
     }
 
