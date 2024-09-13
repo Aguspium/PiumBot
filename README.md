@@ -41,5 +41,5 @@ Esto configurará el token de Discord para autenticar el bot y la ruta de descar
 
 ## Dev
 
-| [<img src="https://avatars.githubusercontent.com/u/168209491?v=4" width=115><br><sub>Aguspium</sub>](https://github.com/Aguspium)
+[<img src="https://avatars.githubusercontent.com/u/168209491?v=4" width=115><br><sub>Aguspium</sub>](https://github.com/Aguspium)
 
