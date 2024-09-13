@@ -1,6 +1,10 @@
 __pycache__/
+<<<<<<< HEAD
 *.pyc
 *.pyo
 *.pyd
 music/
+=======
+Music/
+>>>>>>> 69cd50a (Primer Commit)
 .env
