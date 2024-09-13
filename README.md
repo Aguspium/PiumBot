@@ -33,8 +33,8 @@ Si desea clonar mi proyecto para utilizarlo personalmente debera instalar las si
 
 Deberá crear un archivo llamado .env en el directorio raíz del proyecto y agregar las siguientes variables de entorno:
 
-DB_TOKEN='su_token_de_discord'
-DB_RUTA='ruta_donde_quiera_que_se_descargue_la_musica_local'
+- DB_TOKEN='su_token_de_discord'
+- DB_RUTA='ruta_donde_quiera_que_se_descargue_la_musica_local'
 
 Ejemplo de ruta para DB_RUTA: C:/piumbot/music/%(title)s.%(ext)s
 
