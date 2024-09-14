@@ -23,7 +23,7 @@ async def descargar_cancion(query):
         }],
         'geo_bypass': True,
         'match_filter': 'vcodec: none',
-        'outtmpl': os.getenv('DB_RUTA'), # Cambiar ruta de acceso a donde quieras que se descoargue la musica localmente!
+        'outtmpl': os.getenv('DB_RUTA') + '/%(title)s.%(ext)s',
         'match_filter': yt_dlp.utils.match_filter_func('duration <= 666'),
     }
 
