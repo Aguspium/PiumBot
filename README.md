@@ -35,7 +35,7 @@ Deberá crear un archivo llamado .env en el directorio raíz del proyecto y agre
 - DB_TOKEN='su_token_de_discord'
 - DB_RUTA='ruta_donde_quiera_que_se_descargue_la_musica_local'
 
-Ejemplo de ruta para DB_RUTA: C:/piumbot/music/%(title)s.%(ext)s
+Ejemplo de ruta para DB_RUTA: C:/piumbot/music
 
 Esto configurará el token de Discord para autenticar el bot y la ruta de descarga local para los archivos de música.
 
