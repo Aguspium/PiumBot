@@ -11,27 +11,27 @@ class botones(discord.ui.View):
         super().__init__(timeout=None)
         self.ctx = ctx
 
-    @discord.ui.button(label="Skip", style=discord.ButtonStyle.primary)
-    async def skip_button(self, interaction: discord.Interaction, button: discord.ui.Button):
+    @discord.ui.button(emoji="▶️", style=discord.ButtonStyle.primary, row=0) 
+    async def resume_button(self, interaction: discord.Interaction, button: discord.ui.Button):
         await interaction.response.defer()
-        await skip(self.ctx)
-
-    @discord.ui.button(label="Pausa", style=discord.ButtonStyle.primary)
+        await resume(self.ctx)
+        
+    @discord.ui.button(emoji="⏸️", style=discord.ButtonStyle.primary, row=0)  
     async def pause_button(self, interaction: discord.Interaction, button: discord.ui.Button):
         await interaction.response.defer()
         await pause(self.ctx)
 
-    @discord.ui.button(label="Resumen", style=discord.ButtonStyle.primary)
-    async def resume_button(self, interaction: discord.Interaction, button: discord.ui.Button):
+    @discord.ui.button(emoji="⏭️", style=discord.ButtonStyle.primary, row=0)  
+    async def skip_button(self, interaction: discord.Interaction, button: discord.ui.Button):
         await interaction.response.defer()
-        await resume(self.ctx)
+        await skip(self.ctx)
 
-    @discord.ui.button(label="Desconectar", style=discord.ButtonStyle.primary)
-    async def deconect_button(self, interaction: discord.Interaction, button: discord.ui.Button):
-        await interaction.response.defer()
-        await desconect(self.ctx)
-
-    @discord.ui.button(label="Conectar", style=discord.ButtonStyle.primary)
+    @discord.ui.button(emoji="🟢", style=discord.ButtonStyle.success, row=1) 
     async def conect_button(self, interaction: discord.Interaction, button: discord.ui.Button):
         await interaction.response.defer()
         await conect(self.ctx)
+
+    @discord.ui.button(emoji="🔴", style=discord.ButtonStyle.danger, row=1)  
+    async def deconect_button(self, interaction: discord.Interaction, button: discord.ui.Button):
+        await interaction.response.defer()
+        await desconect(self.ctx)
