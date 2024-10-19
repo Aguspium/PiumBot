@@ -24,7 +24,7 @@ async def descargar_cancion(query):
         'geo_bypass': True,
         'match_filter': 'vcodec: none',
         'outtmpl': os.getenv('DB_RUTA') + '/%(title)s.%(ext)s',
-        'match_filter': yt_dlp.utils.match_filter_func('duration <= 666'),
+        'match_filter': yt_dlp.utils.match_filter_func('duration <= 15600'),
     }
 
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
@@ -44,26 +44,18 @@ async def descargar_cancion(query):
     print(f"Archivo descargado en: {mp3_path}")
     return mp3_path, title
 
-async def play_next(ctx, manual_skip=False):
+async def play_next(ctx):
     if ctx.voice_client:
         if queues[ctx.guild.id]:
             next_song = queues[ctx.guild.id].pop(0)
             
             def on_song_end(error):
-                if error:
-                    print(f"Error en la reproduccion: {error}")
-                elif queues[ctx.guild.id]: 
+                if queues[ctx.guild.id]: 
                     asyncio.run_coroutine_threadsafe(play_next(ctx), ctx.bot.loop)
 
             source = discord.FFmpegPCMAudio(next_song['file'])
             ctx.voice_client.play(source, after=on_song_end)
             current_song[ctx.guild.id] = next_song
 
-            if manual_skip:
-                await ctx.send(f"Skipeada, ahora reproduciendo: {next_song['title']}")
-        else:
-            await ctx.send("No hay mas canciones en la cola.")
-            current_song.pop(ctx.guild.id, None)
-            await ctx.voice_client.disconnect()
     else:
         await ctx.send("No estoy conectado a un canal de voz.")

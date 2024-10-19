@@ -6,6 +6,8 @@ from cogs.utils.skip import skip
 from cogs.utils.pause import pause
 from cogs.utils.conect import conect
 from cogs.utils.desconect import desconect
+from cogs.utils.mute import mute
+from cogs.utils.unmute import unmute 
 
 async def setup(bot):
 
@@ -48,3 +50,11 @@ async def setup(bot):
     @bot.hybrid_command(name="conectar", aliases=["join"], description= "Conecta el bot a un canal de voz")
     async def conect_command(ctx):
         await conect(ctx)
+
+    @bot.hybrid_command(name='mute_emi', description='Mutea a Emi en el canal de voz')
+    async def mute_command(ctx):
+        await mute(ctx)
+
+    @bot.hybrid_command(name='unmute_emi', description='Desmutea a Emi en el canal de voz')
+    async def unmute_command(ctx):
+        await unmute(ctx)
