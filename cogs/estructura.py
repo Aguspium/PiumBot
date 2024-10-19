@@ -59,3 +59,4 @@ async def play_next(ctx):
 
     else:
         await ctx.send("No estoy conectado a un canal de voz.")
+        
