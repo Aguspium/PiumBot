@@ -1,5 +1,8 @@
 from discord import app_commands
+import os
+from dotenv import load_dotenv
 from embeds.playlist import playlist_embed 
+from cogs.utils.lista import BuscarCancionModal, ListaCancionesView
 from cogs.utils.play import play
 from cogs.utils.resume import resume
 from cogs.utils.skip import skip
@@ -8,6 +11,8 @@ from cogs.utils.conect import conect
 from cogs.utils.desconect import desconect
 from cogs.utils.mute import mute
 from cogs.utils.unmute import unmute 
+
+load_dotenv()
 
 async def setup(bot):
 
@@ -58,3 +63,16 @@ async def setup(bot):
     @bot.hybrid_command(name='unmute_emi', description='Desmutea a Emi en el canal de voz')
     async def unmute_command(ctx):
         await unmute(ctx)
+
+    @bot.hybrid_command(name='lista_canciones', description='Muestra lista de canciones')
+    async def lista_canciones(ctx):
+ 
+        db_ruta = os.getenv('DB_RUTA')
+        canciones = [f for f in os.listdir(db_ruta) if f.endswith('.opus')]
+
+        if not canciones:
+            await ctx.send("No se encontraron canciones en la carpeta.")
+            return
+
+        view = ListaCancionesView(ctx, canciones)
+        await view.send_embed()

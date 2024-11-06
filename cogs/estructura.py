@@ -59,4 +59,10 @@ async def play_next(ctx):
 
     else:
         await ctx.send("No estoy conectado a un canal de voz.")
+
+async def obtener_canciones_descargadas():
+    ruta_musica = os.getenv('DB_RUTA') 
+    canciones = [f for f in os.listdir(ruta_musica) if f.endswith('.opus')]
+    canciones_nombres = [os.path.splitext(cancion)[0] for cancion in canciones]
+    return canciones_nombres
         
