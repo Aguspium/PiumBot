@@ -4,7 +4,7 @@ __pycache__/
 *.pyd
 music/
 .env
-cogs/mute.py
-cogs/unmute.py
+cogs/utils/mute.py
+cogs/utils/unmute.py
 
 sd
