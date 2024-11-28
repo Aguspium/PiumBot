@@ -1,6 +1,7 @@
 from discord import app_commands
 import os
 from dotenv import load_dotenv
+from cogs.utils.apodo import cambiar_nombre
 from embeds.playlist import playlist_embed 
 from cogs.utils.lista import BuscarCancionModal, ListaCancionesView
 from cogs.utils.play import play
@@ -66,7 +67,7 @@ async def setup(bot):
 
     @bot.hybrid_command(name='lista_canciones', description='Muestra lista de canciones')
     async def lista_canciones(ctx):
- 
+
         db_ruta = os.getenv('DB_RUTA')
         canciones = [f for f in os.listdir(db_ruta) if f.endswith('.opus')]
 
@@ -76,3 +77,7 @@ async def setup(bot):
 
         view = ListaCancionesView(ctx, canciones)
         await view.send_embed()
+
+    @bot.hybrid_command(name="cambiarnombre", description="Cambia el apodo de un usuario")
+    async def apodo_commad(ctx):
+        await cambiar_nombre(ctx)
