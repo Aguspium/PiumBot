@@ -1,5 +1,4 @@
 from cogs.estructura import descargar_cancion, queues, play_next
-from embeds.playlist import playlist_embed
 
 async def play(ctx, query):
         if ctx.author.voice is None:
@@ -17,7 +16,6 @@ async def play(ctx, query):
             file_path, title = await descargar_cancion(query)
             queues[ctx.guild.id].append({'file': file_path, 'title': title})
             await ctx.send(f"{title} **añadido a la playlist.**")
-            await playlist_embed(ctx)
 
             if not ctx.voice_client.is_playing():
                 await play_next(ctx)

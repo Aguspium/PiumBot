@@ -65,6 +65,8 @@ async def play_next(ctx):
             source = discord.FFmpegPCMAudio(next_song['file'])
             ctx.voice_client.play(source, after=on_song_end)
             current_song[ctx.guild.id] = next_song
+            from embeds.playlist import playlist_embed
+            await playlist_embed(ctx)
         else:
             await ctx.send("La cola está vacía.")
     else:
